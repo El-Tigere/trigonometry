@@ -1,0 +1,10 @@
+/manim/__pycache__
+/manim/media
+/manim/resources/mandelbrot.*
+
+/latex/**/*.aux
+/latex/**/*.fls
+/latex/**/*.log
+/latex/**/*.fdp_latexmk
+/latex/**/*.synctex.gz
+/latex/**/*.fdb_latexmk
