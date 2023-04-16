@@ -17,22 +17,43 @@ class DerivSin(Scene):
         
         text = MathTex("\\frac{d}{dx}\\ sin(x)")
         
+        # derivative of sin
         self.play(Create(text))
         self.wait(1)
         self.play(Transform(text, createGroup(MathTex("^{lim}_{h\\rightarrow0}\\ "), MathTex("sin(x+h){{-sin(x)}} \\over h"))))
         self.wait(1)
+        
+        # addition formula
         self.play(Transform(text, createGroup(MathTex("^{lim}_{h\\rightarrow0}\\ "), MathTex("sin(x)cos(h)+cos(x)sin(h){{-sin(x)}} \\over h"))))
         self.play(Transform(text, createGroup(MathTex("^{lim}_{h\\rightarrow0}\\ "), MathTex("sin(x)cos(h){{+cos(x)sin(h)}}-sin(x) \\over {{h}}")), run_time = 0))
         self.wait(1)
         self.play(Transform(text, createGroup(MathTex("^{lim}_{h\\rightarrow0}\\ "), MathTex("sin(x)(cos(h)-1){{+cos(x)sin(h)}} \\over {{h}}"))))
         self.play(Transform(text, createGroup(MathTex("^{lim}_{h\\rightarrow0}\\ "), MathTex("{{sin(x)(cos(h)-1)}}+{{cos(x)sin(h)}} \\over h")), run_time = 0))
         self.wait(1)
+        
+        # splitting fractions
         self.play(Transform(text, createGroup(MathTex("^{lim}_{h\\rightarrow0}\\ "), MathTex("{{sin(x)(cos(h)-1)}} \\over h"), MathTex("+"), MathTex("{{cos(x)sin(h)}} \\over h"))))
         self.wait(1)
         self.play(Transform(text, createGroup(MathTex("^{lim}_{h\\rightarrow0}\\ "), MathTex("{{sin(x)(cos(h)-1)}}", " \\over h"), MathTex("+\\ ", "^{lim}_{h\\rightarrow0}\\ "), MathTex("{{cos(x)sin(h)}}", " \\over h"))))
         self.wait(1)
-        self.play(Transform(text, MathTex("0+", "cos(x)")))
+        
+        # limit
+        self.play(Transform(text, createGroup(MathTex("^{lim}_{h\\rightarrow0}\\ "), MathTex("sin(x)(0)", " \\over h"), MathTex("+\\ ", "^{lim}_{h\\rightarrow0}\\ "), MathTex("cos(x)sin(h)", " \\over h"))))
         self.wait(1)
+        self.play(Transform(text, createGroup(MathTex("^{lim}_{h\\rightarrow0}\\ "), MathTex("0", " \\over h"), MathTex("+\\ ", "^{lim}_{h\\rightarrow0}\\ "), MathTex("cos(x)sin(h)", " \\over h"))))
+        self.wait(1)
+        self.play(Transform(text, createGroup(MathTex("0"), MathTex("+\\ ", "^{lim}_{h\\rightarrow0}\\ "), MathTex("cos(x)sin(h)", " \\over h"))))
+        self.wait(1)
+        self.play(Transform(text, createGroup(MathTex("^{lim}_{h\\rightarrow0}\\ "), MathTex("cos(x)sin(h)", " \\over h"))))
+        self.wait(1)
+        self.play(Transform(text, createGroup(MathTex("^{lim}_{h\\rightarrow0}\\ "), MathTex("cos(x)h", " \\over h"))))
+        self.wait(1)
+        self.play(Transform(text, createGroup(MathTex("^{lim}_{h\\rightarrow0}\\ "), MathTex("cos(x)"))))
+        self.wait(1)
+        self.play(Transform(text, MathTex("cos(x)")))
+        self.wait(1)
+        
+        # result
         self.play(Transform(text, MathTex("\\frac{d}{dx}\\ sin(x)=", "cos(x)")))
         self.wait(1)
         
