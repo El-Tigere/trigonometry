@@ -1,5 +1,17 @@
 from manim import *
 
+# creates a VGroup from two VMobjects and alignes them next to each other
+def createGroup(*objects):
+    group = VGroup()
+    last = None
+    for object in objects:
+        if last is not None:
+            object.next_to(last, RIGHT)
+        group.add(object)
+        last = object
+    group.move_to([0, 0, 0])
+    return group
+
 class DerivSin(Scene):
     def construct(self):
         
